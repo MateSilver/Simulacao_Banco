@@ -84,7 +84,7 @@ void menu_principal(fixa* fixa,conta * conta) {
                 return;
                 break;
             default:
-                printf("\n** Comando inv�lido digite C, T ou S para prosseguir **\n");
+                printf("\n** Comando invalido digite C, T ou S para prosseguir **\n");
         }
         printlista();
     }
@@ -95,12 +95,12 @@ void printLista_Cliente(){
     setlocale(LC_ALL,"");
     printf("============ Gerenciar Clientes ============\n");
     printf("Digite um comando para prosseguir:\n");
-    printf("C � Cadastrar um cliente\n");
-    printf("L � Listar todos os clientes cadastrados\n");
-    printf("B � Buscar cliente j� cadastrado\n");
-    printf("A � Atualizar um cliente cadastrado\n");
-    printf("E � Excluir um cliente cadastrado\n");
-    printf("S � Sair\n");
+    printf("C - Cadastrar um cliente\n");
+    printf("L - Listar todos os clientes cadastrados\n");
+    printf("B - Buscar cliente ja cadastrado\n");
+    printf("A - Atualizar um cliente cadastrado\n");
+    printf("E - Excluir um cliente cadastrado\n");
+    printf("S - Sair\n");
 }
 
 void menu_gerenciar_cliente(fixa* cliente, conta* conta){
@@ -138,14 +138,14 @@ void printLista_conta(){
     system("cls");
     printf("============== Gerenciar Contas ==============\n");
     printf("Digite um comando para prosseguir:\n");
-    printf("R � Listagem de todas as contas cadastradas.\n");
-    printf("C � Cadastrar uma conta para um cliente.\n");
-    printf("L � Listar todas as contas de um cliente.\n");
-    printf("W � Realizar um saque em uma conta.\n");
-    printf("D � Realizar um dep�sito em uma conta.\n");
-    printf("T � Realizar transfer�ncia entre contas.\n");
-    printf("E � Exibir extrato de uma conta.\n");
-    printf("S � Sair\n");
+    printf("R - Listagem de todas as contas cadastradas.\n");
+    printf("C - Cadastrar uma conta para um cliente.\n");
+    printf("L - Listar todas as contas de um cliente.\n");
+    printf("W - Realizar um saque em uma conta.\n");
+    printf("D - Realizar um deposito em uma conta.\n");
+    printf("T - Realizar transferencia entre contas.\n");
+    printf("E - Exibir extrato de uma conta.\n");
+    printf("S - Sair\n");
 }
 
  void menu_gerenciar_conta(fixa * cliente,conta * conta){
@@ -214,7 +214,7 @@ void Cadastro_cliente(fixa * cliente,conta* conta){
     scanf("%[^\n]", telefone);
     getchar();
 
-    printf("ENDERE�O: ");
+    printf("ENDERECO: ");
     scanf("%[^\n]", endereco);
     getchar();
 
@@ -329,7 +329,7 @@ void lista_conta_cliente(fixa * cliente,conta * conta) {
     for(i=0; i<num_contas; i++){
         if(conta[i].cliente->cpf == cliente[indice].cpf){
             printf("Agencia: %s\n", conta[i].agencia);
-            printf("C�digo: %d\n", conta[i].numero_conta);
+            printf("Codigo: %d\n", conta[i].numero_conta);
             printf("Saldo: %d\n\n", conta[i].saldo);
         }
     }
@@ -351,23 +351,23 @@ void deposito(fixa * cliente,conta * conta){
     data = localtime(&segundos);
 
     setlocale(LC_ALL,"");
-    printf("AG�NCIA: ");
+    printf("AGENCIA: ");
 
     getchar();
     scanf("%[^\n]", agencia);
-    printf("CONTA n�: ");
+    printf("CONTA numero: ");
 
     scanf("%d", &numero);
     for(i=0; i<num_contas; i++){
         if(strcmp(conta[i].agencia,agencia) == 0 && conta[i].numero_conta == numero){
             printf("NOME: %s\n", conta[i].cliente->nome);
             printf("CPF: %s\n", conta[i].cliente->cpf);
-            printf("C�DIGO: %d\n", conta[i].cliente->codigo);
+            printf("CODIGO: %d\n", conta[i].cliente->codigo);
 
             printf("QUANTIA: ");
             scanf("%d", &quantia);
 
-            printf("DESCRI��O DO DEPOSITO: ");
+            printf("DESCRICAO DO DEPOSITO: ");
             getchar();
             scanf("%[^\n]", descricao);
 
@@ -406,18 +406,18 @@ void saque(fixa * cliente,conta * conta) {
     data = localtime(&segundos);
 
     setlocale(LC_ALL,"");
-    printf("AG�NCIA: ");
+    printf("AGENCIA: ");
 
     getchar();
     scanf("%[^\n]", agencia);
-    printf("CONTA n�: ");
+    printf("CONTA numero: ");
 
     scanf("%d", &numero);
     for(i=0; i<num_contas; i++){
         if(strcmp(conta[i].agencia,agencia) == 0 && conta[i].numero_conta == numero){
             printf("NOME: %s\n", conta[i].cliente->nome);
             printf("CPF: %s\n", conta[i].cliente->cpf);
-            printf("C�DIGO: %d\n", conta[i].cliente->codigo);
+            printf("CODIGO: %d\n", conta[i].cliente->codigo);
             printf("%d R$\n", conta[i].saldo);
 
             printf("QUANTIA A SACAR: ");
@@ -427,7 +427,7 @@ void saque(fixa * cliente,conta * conta) {
                 scanf("%d", &quantia);
             }
 
-            printf("DESCRI��O DO SAQUE: ");
+            printf("DESCRICAO DO SAQUE: ");
             getchar();
             scanf("%[^\n]", descricao);
 
@@ -496,10 +496,10 @@ void transferencia(fixa * cliente,conta * conta){
     setlocale(LC_ALL,"");
     char agencia[TAM_AGENCIA+1];
     int numero;
-    printf("AGENCIA QUE RELIZAR� TRANSFERENCIA: ");
+    printf("AGENCIA QUE RELIZARA TRANSFERENCIA: ");
     getchar();
     scanf("%[^\n]", agencia);
-    printf("NUMERO DA CONTA QUE REALIZAR� TRANSFERENCIA: ");
+    printf("NUMERO DA CONTA QUE REALIZARA TRANSFERENCIA: ");
     scanf("%d", &numero);
     if(busca_conta_num(conta,numero) != 1 || busca_conta_agencia(conta,agencia) != 1){
         printf("CONTA NAO ENCONTRADA\n");
@@ -612,7 +612,7 @@ void extrato(fixa * cliente,conta * conta){
     int numero;
     int indice = -1;
 
-    printf("N� CONTA: ");
+    printf("Número da CONTA: ");
     scanf("%d", &numero);
     for(i=0; i<num_contas; i++){
         if(conta[i].numero_conta == numero){
@@ -653,7 +653,7 @@ int busca_nome(fixa * cliente){
     for(i=0; i<num_clientes; i++){
         if(strcmp(cliente[i].nome,buffer) == 0){
             printf("Achado:\nNome: %s\n", cliente[i].nome);
-            printf("C�digo: %d\n", cliente[i].codigo);
+            printf("Codigo: %d\n", cliente[i].codigo);
             getchar();
             printf("pressione qualquer tecla para continuar\n");
             getchar();
@@ -676,7 +676,7 @@ void  lista_contas(fixa * cliente,conta * conta){
         return;
     }
     for(i=0; i<num_contas; i++){
-        printf("Conta n� %d\n", conta[i].numero_conta);
+        printf("Conta numero %d\n", conta[i].numero_conta);
         printf("Agencia: %s\n", conta[i].agencia);
         printf("Saldo: %d\n\n", conta[i].saldo);
     }
@@ -707,7 +707,7 @@ int busca_cpf(fixa * cliente){
     for(i=0; i<num_clientes; i++){
         if(strcmp(cliente[i].cpf,buffer) == 0){
             printf("Achado:\nNome: %s\n", cliente[i].nome);
-            printf("C�digo: %d\n", cliente[i].codigo);
+            printf("Codigo: %d\n", cliente[i].codigo);
             getchar();
             printf("pressione qualquer tecla para continuar\n");
             getchar();
@@ -726,7 +726,7 @@ int busca_codigo(fixa * cliente){
     setlocale(LC_ALL,"");
     system("cls");
     int buffer;
-    printf("C�DIGO: ");
+    printf("CODIGO: ");
     getchar();
     scanf("%d", &buffer);
 
@@ -734,7 +734,7 @@ int busca_codigo(fixa * cliente){
     for(i=0; i<num_clientes; i++){
         if(cliente[i].codigo == buffer){
             printf("Achado:\nNome: %s\n", cliente[i].nome);
-            printf("C�digo: %d\n", cliente[i].codigo);
+            printf("Codigo: %d\n", cliente[i].codigo);
             getchar();
             printf("pressione qualquer tecla para continuar\n");
             getchar();
@@ -762,7 +762,7 @@ void excluir_cliente(fixa * cliente,conta * conta){
     char op;
     int indice = busca(cliente);
     if(indice < 0){
-        printf("**Cliente n�o cadastrado**\n");
+        printf("**Cliente nao cadastrado**\n");
         printf("V - voltar ao menu\n");
         printf("R - buscar novamente\n");
         switch(op){
@@ -799,7 +799,7 @@ void altera_cliente(fixa * cliente, conta * conta){
     int indice = busca(cliente);
     if(indice < 0){
         system("cls");
-        printf("**Cliente n�o cadastrado**\n");
+        printf("**Cliente nao cadastrado**\n");
         printf("V - voltar ao menu\n");
         printf("R - buscar novamente\n");
         scanf("%c", &op);
@@ -838,7 +838,7 @@ void altera_cliente(fixa * cliente, conta * conta){
     scanf("%[^\n]", telefone);
     getchar();
 
-    printf("ENDERE�O ATUAL: %s\nNOVO ENDERE�O: ", cliente[indice].endereco);
+    printf("ENDERECO ATUAL: %s\nNOVO ENDERECO: ", cliente[indice].endereco);
     scanf("%[^\n]", endereco);
     getchar();
 
@@ -862,7 +862,7 @@ void altera_cliente_endereco(fixa * cliente, int n){
     char buffer[TAM_MAX_ENDERECO+1];
     //system("cls");
     setlocale(LC_ALL,"");
-    printf("NOVO ENDERE�O: ");
+    printf("NOVO ENDERECO: ");
     getchar();
     scanf("%[^\n]", buffer);
 
@@ -894,7 +894,7 @@ void printLista_busca(){
     system("cls");
     printf("**BUSCA**\n");
     printf("N - Nome\n");
-    printf("C - C�digo\n");
+    printf("C - Codigo\n");
     printf("P - CPF/CNPJ\n");
 }
 
@@ -925,15 +925,15 @@ void print_cliente(fixa * cliente,int n){
     printf("NOME: %s\n", cliente[n].nome);
     printf("CPF: %s\n", cliente[n].cpf);
     printf("TELEFONE: %s\n", cliente[n].telefone);
-    printf("C�DIGO: %d\n", cliente[n].codigo);
-    printf("ENDERE�O: %s\n", cliente[n].endereco);
+    printf("CODIGO: %d\n", cliente[n].codigo);
+    printf("ENDERECO: %s\n", cliente[n].endereco);
     printf("pressione qualquer teclar para continuar\n");
 }
 
 void print_lista_altera_dados(){
         printf("==========Alterar==========\n");
         printf("N - Alterar Nome\n");
-        printf("E - Alterar Endere�o\n");
+        printf("E - Alterar Endereco\n");
         printf("T - Alterar telefone\n");
         printf("C - Alterar CPF\n");
         printf("S - Voltar ao menu de gerenciar cliente\n");

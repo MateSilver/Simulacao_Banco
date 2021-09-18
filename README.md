@@ -1,4 +1,6 @@
 # Simulacao_Banco
+![image](https://user-images.githubusercontent.com/63373687/133897760-7caa91d1-7b75-4579-b0b9-a0243898dd59.png)
+
 Banco em C, faz contas e cadastro de clientes.
 Cadastre um cliente em "Menu Cliente" e após, Cadastre uma nova conta para esse cliente
 Em Menu Conta, É necessário ter uma ficha de cliente no programa para criar uma conta.
